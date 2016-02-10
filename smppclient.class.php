@@ -521,7 +521,7 @@ class SmppClient
 		$message = $this->getOctets($ar,$sm_length);
 		
 		if($dataCoding == 8){
-			$message = GsmEncoder::ucs2_to_utf8($message)
+			$message = GsmEncoder::ucs2_to_utf8($message);
 		}
 		
 		// Check for optional params, and parse them
