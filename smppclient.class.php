@@ -518,7 +518,11 @@ class SmppClient
 		$dataCoding = next($ar);
 		next($ar); // sm_default_msg_id 
 		$sm_length = next($ar);
-		$message = $this->getString($ar,$sm_length);
+		$message = $this->getOctets($ar,$sm_length);
+		
+		if($dataCoding == 8){
+			$message = GsmEncoder::ucs2_to_utf8($message)
+		}
 		
 		// Check for optional params, and parse them
 		if (current($ar) !== false) {
