@@ -41,6 +41,17 @@ class GsmEncoder
 	}
 	
 	/**
++	 * Encode an UCS-2 string into UTF-8 string
++	 *
++	 * @param string $string
++	 * @return string
++	 */
++	public static function ucs2_to_utf8($string)
++	{
++		return mb_convert_encoding($string, "UTF-8", "UTF-16BE");
++	}
+
+	/**
 	 * Count the number of GSM 03.38 chars a conversion would contain.
 	 * It's about 3 times faster to count than convert and do strlen() if conversion is not required.
 	 * 
